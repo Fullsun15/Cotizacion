@@ -319,15 +319,21 @@
     let texto = '';
     const hora = `Hora: ${ahora.toLocaleTimeString()}`;
     const fecha = `Fecha: ${ahora.toLocaleDateString()}`;
-    texto += `${hora.padStart(40)}\n`;
+    texto += `${hora.padStart(36)}\n`;
     texto += `${fecha.padStart(36)}\n`;
     texto += 'RUT: 23204407-1\n';
     texto += 'IMP Y EXP CHINO99\n\n';
-    texto += 'COD    ARTICULO      CANT      UNID   VALOR\n';
-    texto += '--------------------------------------------\n';
+    texto += 
+  'COD'.padStart(3 + 1).padEnd(6) + 
+  'ARTICULO'.padStart(6 + 1).padEnd(15) +
+  'CANT'.padStart(2 + 1).padEnd(6) + 
+  'UND'.padStart(3 + 1).padEnd(8) + 
+  'VALOR'.padStart(3 + 1).padEnd(8) + '\n';
+texto += '----------------------------------------\n';
+
 
     filas.forEach(fila => {
-      const codigo = fila.children[0].textContent.slice(0, 5).padStart(3 + 1).padEnd(6);
+      const codigo = fila.children[0].textContent.slice(0, 10).padStart(3 + 1).padEnd(6);
       const nombre = fila.children[1].textContent.slice(0, 13).padStart(6 + 1).padEnd(15);
       const cant = fila.children[2].textContent.padStart(2 + 1).padEnd(6);
       const precio = fila.children[3].textContent.replace(/\$|\.|,/g, '').padStart(8);
